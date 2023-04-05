@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="background2">
+<html class="background2" >
   <head>
     <title>Request</title>
     <%= csrf_meta_tags %>
@@ -9,7 +9,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
+
   <div>
+    <div class="topnav"><%=link_to "Все заявки", feedbacks_path %>
+        <%=link_to "Все отделы", departaments_path %>
+
+    </div>
+   
     <div class="background">
       <body >
         <%= yield %>
