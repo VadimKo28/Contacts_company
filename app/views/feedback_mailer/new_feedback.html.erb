@@ -1,1 +1,3 @@
-<h3>Заявка от <%@feedback.email%> отправлена<h3>
+<h3>Заявка № <%=@feedback.id%></h3>
+<p> "<%= @feedback.message%>"</p>
+<p>Сформирована от <%=@feedback.name%> </p>

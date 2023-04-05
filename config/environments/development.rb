@@ -63,7 +63,6 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_mailer.perform_deliveries = true
 
-
   # config.action_mailer.smtp_settings = {
   #   address: "smtp.mail.ru",
   #   port: 465,
@@ -75,13 +74,14 @@ Rails.application.configure do
   # }
 
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mail.ru',
+    address: "smtp.mail.ru",
     port: 465,
-    user_name: 'vadim.kozelskij',
-    password: 'bDsn6akkfYhh98eDpVG8',
+    user_name: "vadim.kozelskij",
+    password: "bDsn6akkfYhh98eDpVG8",
     authentication: :login,
-    ssl: true
+    ssl: true,
   }
 end
