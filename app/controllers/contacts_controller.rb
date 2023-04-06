@@ -24,10 +24,15 @@ class ContactsController < ApplicationController
 
   def update
     if @contact.update(contact_params)
-      redirect_to departaments_path
+      redirect_to departaments_path,  notice: 'Контакт обновлён'
     else 
       render :edit
     end
+  end
+
+  def destroy 
+    @contact.destroy 
+    redirect_to departaments_path, notice: 'Контакт удалён'
   end
 
   private

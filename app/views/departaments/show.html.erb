@@ -1,7 +1,13 @@
+<p id="notice"><%= notice %></p>
+
 <h3>Контакты</h3>
 
 <%@contacts.each do |contact|%>
 <p><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>" 
- <%= link_to "Редактировать", edit_contact_path%></p>
+ <%= link_to "Редактировать", edit_contact_path(contact)%>
+  <%=link_to "Удалить", contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }%></p>
 
 <%end%>
+
+<%= link_to 'Back', departaments_path %>
+

@@ -1,5 +1,5 @@
 <h1>Редактирование</h1>
-<%= form_with(model: @contact, url: @contact.new_record? ? contacts_path : contact_path(@contact), local: true) do |form| %>    
+<%= form_with(model: @contact, local: true) do |form| %>    
    
    <div>
     <p><%= form.label :"Имя" %></p>
