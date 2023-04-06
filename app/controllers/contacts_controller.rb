@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :status_user, only: %i[edit new]
+  before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update edit destroy ]
 
   def index
@@ -20,6 +22,7 @@ class ContactsController < ApplicationController
   end
 
   def edit 
+    
   end
 
   def update
@@ -43,5 +46,13 @@ class ContactsController < ApplicationController
 
   def set_contact
     @contact = Contact.find(params[:id])
+  end
+
+  def status_user
+    if current_user.status == 1
+      true
+    else 
+      render "contacts/index"
+    end
   end
 end

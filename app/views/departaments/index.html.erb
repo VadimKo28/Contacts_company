@@ -3,7 +3,9 @@
 <p><%= link_to departament.title, departament_path(departament)%></p>
 <%end%>
 
-<p><%= button_to "Создать контакт", new_contact_path, method: :get %></p>
+<%if current_user.status == 1%>
 
+<p><%= button_to "Создать контакт", new_contact_path, method: :get %></p>
+<%end%>
 
 

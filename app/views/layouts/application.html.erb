@@ -12,8 +12,10 @@
 
   <div>
     <div class="topnav">
-      <%=link_to "Заявки", feedbacks_path %>
+      <%=link_to "Заявки", feedbacks_path, style: "margin-left: 120px" %>
       <%=link_to "Контакты", departaments_path %>
+      <%= link_to "Выйти", destroy_user_session_path, method: :delete, class:"align-right"%>
+
     </div>
    
     <div class="background">
