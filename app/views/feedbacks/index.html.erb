@@ -12,7 +12,7 @@
   <tbody>
     <% @feedbacks.each do |feedback| %>
       <tr>
-        <td><%= link_to "Заявка №#{feedback.id} #{feedback.title}", feedback %></td>
+        <td style="text-align: left"><%= link_to "Заявка №#{feedback.id} #{feedback.title}", feedback %></td>
       </tr>
     <% end %>
   </tbody>
