@@ -3,7 +3,7 @@
 <p><%= link_to departament.title, departament_path(departament)%></p>
 <%end%>
 
-<p><%= link_to "Создать контакт", new_contact_path %></p>
+<p><%= button_to "Создать контакт", new_contact_path, method: :get %></p>
 
 
 

@@ -1,6 +1,7 @@
 <h3>Контакты</h3>
 
 <%@contacts.each do |contact|%>
-<p><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>"</p>
+<p><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>" 
+ <%= link_to "Редактировать", edit_contact_path%></p>
 
 <%end%>

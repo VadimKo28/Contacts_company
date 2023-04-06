@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: %i[ show update edit destroy]
+  before_action :set_contact, only: %i[ show update edit destroy ]
 
   def index
     @contacts = Contact.include(:departament).all
@@ -12,17 +12,28 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    if @contact.save 
+    if @contact.save
       redirect_to departaments_path
     else
-      render :new 
+      render :new
     end
-    
   end
 
-  private 
-  def contact_params 
-    params.require(:contact).permit(:departament_id, :name, :telephone, :email)  
+  def edit 
+  end
+
+  def update
+    if @contact.update(contact_params)
+      redirect_to departaments_path
+    else 
+      render :edit
+    end
+  end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:departament_id, :name, :telephone, :email)
   end
 
   def set_contact
