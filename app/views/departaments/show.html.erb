@@ -1,0 +1,6 @@
+<h3>Контакты</h3>
+
+<%@contacts.each do |contact|%>
+<p><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>"</p>
+
+<%end%>

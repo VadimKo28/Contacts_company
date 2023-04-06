@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'departaments/index'
+  # get "departaments/index"
   resources :feedbacks
-  resources :departaments
+
+  resources :departaments 
+  resources :contacts
+  
 end

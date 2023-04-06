@@ -1,6 +1,9 @@
-<h1>Departaments#index</h1>
-<p>Find me in app/views/departaments/index.html.erb</p>
 
 <% @departaments.each do |departament|%>
-<%= departament.title%>
+<p><%= link_to departament.title, departament_path(departament)%></p>
 <%end%>
+
+<p><%= link_to "Создать контакт", new_contact_path %></p>
+
+
+
