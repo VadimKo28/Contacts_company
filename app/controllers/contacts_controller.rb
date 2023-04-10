@@ -7,6 +7,10 @@ class ContactsController < ApplicationController
     @contacts = Contact.include(:departament).all
   end
 
+  def search 
+    @contacts = Contact.where("name LIKE ?", "%#{params[:name]}%")
+  end
+
   def new
     @contact = Contact.new
   end
