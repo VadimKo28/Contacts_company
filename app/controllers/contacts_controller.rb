@@ -7,8 +7,9 @@ class ContactsController < ApplicationController
     @contacts = Contact.include(:departament).all
   end
 
-  def search 
-    @contacts = Contact.where("name LIKE ?", "%#{params[:name]}%")
+  def search
+    contacts = Contact.where("name LIKE ?", "%#{params[:name]}%")
+    render json: contacts
   end
 
   def new
@@ -25,21 +26,25 @@ class ContactsController < ApplicationController
     end
   end
 
-  def edit 
-    
+  def edit
   end
 
   def update
     if @contact.update(contact_params)
-      redirect_to departaments_path,  notice: 'Контакт обновлён'
-    else 
+      redirect_to departaments_path, notice: "Контакт обновлён"
+    else
       render :edit
     end
   end
 
-  def destroy 
-    @contact.destroy 
-    redirect_to departaments_path, notice: 'Контакт удалён'
+  def destroy
+    @contact.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js # добавляем эту строку для создания файлов.js.erb
+    end
+
   end
 
   private
@@ -55,7 +60,7 @@ class ContactsController < ApplicationController
   def status_user
     if current_user.status == 1
       true
-    else 
+    else
       render "contacts/index"
     end
   end

@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<div id="title">
 <h3>Контакты</h3>
+</div>
 
 <%@contacts.each do |contact|%>
-<p><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>" </p>
+<p id="contact_<%= contact.id %>"><%= contact.name %>: тел. <%= contact.telephone%>, email "<%= contact.email%>"
   <%if current_user.status == 1%>
     <%= link_to "Редактировать", edit_contact_path(contact)%>
-    <%=link_to "Удалить", contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }%></p>
+    <%# <a href="#" onclick="deleteContact(<%= contact.id)">Удалить</a> %> 
+    <%= link_to "Delete", contact_path(contact.id), method: :delete, remote: true %>
+
+
   <%end%>
 <%end%>
 

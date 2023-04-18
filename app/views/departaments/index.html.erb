@@ -6,6 +6,8 @@
 <%if current_user.status == 1%>
 
 <p><%= button_to "Создать контакт", new_contact_path, method: :get %></p>
+  <div id="contacts"></div> <!-- элемент, в который мы будем добавлять таблицу -->
+
 <%end%>
 
 
