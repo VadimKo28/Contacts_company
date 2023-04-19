@@ -3,10 +3,6 @@ class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update edit destroy ]
 
-  def index
-    @contacts = Contact.include(:departament).all
-  end
-
   def search
     contacts = Contact.where("name LIKE ?", "%#{params[:name]}%")
     render json: contacts

@@ -20,6 +20,11 @@
 
       <%=link_to "Заявки", feedbacks_path, style: "margin-left: 120px" %>
       <%=link_to "Контакты", departaments_path %>
+      
+      <% if user_signed_in? && current_user.status == 1 %>
+        <div style="display: inline-block; vertical-align: middle;"><%= button_to "Создать контакт", new_contact_path, method: :get %></div>
+      <% end %>
+
       <%= link_to "Выйти", destroy_user_session_path, method: :delete, class:"align-right"%>
 
     </div>

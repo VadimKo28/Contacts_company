@@ -1,13 +1,23 @@
 
 <% @departaments.each do |departament|%>
-<p><%= link_to departament.title, departament_path(departament)%></p>
+  <%if departament.contacts.any? %>
+    <b><p><%= departament.title%></p></b>
+  <%end%>
+
+  <%departament.contacts.each do |contact|%>
+    <p id="contact_<%= contact.id %>" >
+      <%=contact.name%>: 
+      тел. <%= contact.telephone%>, email "<%= contact.email%>"
+      <% if user_signed_in? && current_user.status == 1%>
+        <%= link_to "Редактировать", edit_contact_path(contact)%>
+        <%= link_to "Удалить", contact_path(contact.id), method: :delete, remote: true %>
+      <%end%>
+    </p>
+  <%end%>
 <%end%>
 
-<%if current_user.status == 1%>
+<div id="contacts"></div> <!-- элемент, в который мы будем добавлять таблицу -->
 
-<p><%= button_to "Создать контакт", new_contact_path, method: :get %></p>
-  <div id="contacts"></div> <!-- элемент, в который мы будем добавлять таблицу -->
 
-<%end%>
 
 
