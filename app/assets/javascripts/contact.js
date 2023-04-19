@@ -1,5 +1,5 @@
 function search() {
-    const nameParam = document.getElementById("name").value; // задаём значение параметра name
+    const searchParam = document.getElementById("search").value; // задаём значение параметра name
     const xhr = new XMLHttpRequest(); // создаем экземпляр объекта XMLHttpRequest
 
     xhr.onreadystatechange = function () { // функция, которая будет вызвана при изменении состояния запроса
@@ -11,7 +11,7 @@ function search() {
         }
     };
 
-    xhr.open('GET', `/search/?name=${nameParam}`, true); // открываем соединение и указываем URL с параметром name
+    xhr.open('GET', `/search/?search=${searchParam}`, true); // открываем соединение и указываем URL с параметром name
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8'); // указываем тип контента
     xhr.send(); // отправляем GET-запрос
 }

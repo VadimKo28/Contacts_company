@@ -4,7 +4,8 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show update edit destroy ]
 
   def search
-    contacts = Contact.where("name LIKE ?", "%#{params[:name]}%")
+    contacts = Contact.where("name = ? or email = ?", params[:search], params[:search]) if params[:search].present?
+
     render json: contacts
   end
 
@@ -40,7 +41,6 @@ class ContactsController < ApplicationController
       format.html { redirect_to root_url }
       format.js # добавляем эту строку для создания файлов.js.erb
     end
-
   end
 
   private

@@ -14,11 +14,11 @@
     <div class="topnav">
       
       <div class="search-form">
-          <%= text_field_tag :name %>
+          <%= text_field_tag :search %>
           <button onclick="search()">Поиск</button>
       </div>
 
-      <%=link_to "Заявки", feedbacks_path, style: "margin-left: 120px" %>
+      <%=link_to "Заявки", feedbacks_path, style: "margin-left: -80px" %>
       <%=link_to "Контакты", departaments_path %>
       
       <% if user_signed_in? && current_user.status == 1 %>
