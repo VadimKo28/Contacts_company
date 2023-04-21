@@ -11,7 +11,7 @@ function search() {
         }
     };
 
-    xhr.open('GET', `/search/?search=${searchParam}`, true); // открываем соединение и указываем URL с параметром name
+    xhr.open('GET', `/contact_search/?search=${searchParam}`, true); // открываем соединение и указываем URL с параметром name
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8'); // указываем тип контента
     xhr.send(); // отправляем GET-запрос
 }

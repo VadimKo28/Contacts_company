@@ -1,9 +1,12 @@
 class ContactsController < ApplicationController
-  before_action :status_user, only: %i[edit new]
   before_action :authenticate_user!
   before_action :set_contact, only: %i[ show update edit destroy ]
 
-  def search
+  def index
+    @contacts = Contact.includes(:departament).order('departaments.title ASC').page(params[:page]).per(13)
+  end
+
+  def contact_search
     contacts = Contact.where("name = ? or email = ?", params[:search], params[:search]) if params[:search].present?
 
     render json: contacts
@@ -53,11 +56,4 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
   end
 
-  def status_user
-    if current_user.status == 1
-      true
-    else
-      render "contacts/index"
-    end
-  end
 end

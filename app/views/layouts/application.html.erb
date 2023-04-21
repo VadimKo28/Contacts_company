@@ -14,11 +14,21 @@
     <div class="topnav">
       
       <div class="search-form">
-          <%= text_field_tag :search %>
+          <%= text_field_tag :search, nil, placeholder: "Введите ФИО или email ..."%>
           <button onclick="search()">Поиск</button>
       </div>
 
-      <%=link_to "Заявки", feedbacks_path, style: "margin-left: -80px" %>
+      <div class="search-form">
+        <%= form_tag departament_search_path, method: :get do %>
+            <%= select_tag :search, 
+            options_for_select([["Введите отдел", ""],["Oтдел снабжения", 1], ["Отдел кадров", 2],
+             ["Архив", 3], ["Бухгалтерия", 4]]) %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      </div>
+      
+      <%=link_to "Главная", root_path, style: "margin-left: -80px"  %>
+      <%=link_to "Заявки", feedbacks_path%>
       <%=link_to "Контакты", departaments_path %>
       
       <% if user_signed_in? && current_user.status == 1 %>
@@ -29,8 +39,11 @@
 
     </div>
    
+   <p id="notice"><%= notice %></p>
+
     <div class="background">
       <body >
+
         <%= yield %>
       </body>
     <div>

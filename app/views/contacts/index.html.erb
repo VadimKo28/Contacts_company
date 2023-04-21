@@ -1,0 +1,23 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>ФИО</th>
+      <th>Email</th>
+      <th>ОТДЕЛ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.departament.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @contacts%>
+
+<div id="contacts"></div> <!-- элемент, в который мы будем добавлять таблицу -->
