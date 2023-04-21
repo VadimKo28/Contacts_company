@@ -1,1 +1,5 @@
-<p><%= @departament.title%></p>
+<p><% @contacts_departament.each do |contact|%></p>
+<%= contact.name%>
+<%end%>
+
+<%= paginate @contacts_departament%> 
