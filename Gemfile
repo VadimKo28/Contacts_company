@@ -15,6 +15,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'axlsx'
+gem 'axlsx_rails'
 
 
 
@@ -25,8 +27,8 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "spring", group: :developmentb
+  gem 'spring-watcher-listen', '~> 2.0.1'
 end
 
 group :test do

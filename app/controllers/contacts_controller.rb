@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show update edit destroy ]
 
   def index
-    @contacts = Contact.includes(:departament).order('departaments.title ASC').page(params[:page]).per(13)
+    @contacts = Contact.includes(:departament).order("departaments.title ASC").page(params[:page]).per(13)
   end
 
   def contact_search
@@ -12,13 +12,23 @@ class ContactsController < ApplicationController
     render json: contacts
   end
 
+  def export_to_excel
+    @contacts = Contact.includes(:departament).order("departaments.title ASC") # Данные, которые мы хотим выгрузить в Excel файл
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="all_contacts.xlsx"'
+      }
+    end
+  end
+
   def new
     @contact = Contact.new
   end
 
   def create
     @contact = Contact.new(contact_params)
-
     if @contact.save
       redirect_to departaments_path
     else
@@ -55,5 +65,4 @@ class ContactsController < ApplicationController
   def set_contact
     @contact = Contact.find(params[:id])
   end
-
 end

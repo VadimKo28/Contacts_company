@@ -1,0 +1,16 @@
+// Получить JSON-данные от сервера
+const data = <%= raw @contact.to_json %>;
+
+// Найти или создать HTML-элемент для отображения данных
+let objectElement = document.getElementById(`object-${data.id}`);
+if (!objectElement) {
+  objectElement = document.createElement('div');
+  objectElement.id = `object-${data.id}`;
+  document.body.appendChild(objectElement);
+}
+
+// Обновить содержимое элемента
+objectElement.innerHTML = `
+  <h1>${data.name}</h1>
+  <p>${data.description}</p>
+`;

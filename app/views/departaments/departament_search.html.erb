@@ -1,5 +1,22 @@
-<p><% @contacts_departament.each do |contact|%></p>
-<%= contact.name%>
-<%end%>
+<div id="contacts"></div> <!-- элемент, в который мы будем добавлять таблицу -->
 
-<%= paginate @contacts_departament%> 
+<div id="search-results">
+
+<h2><%= @departament.title%></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ФИО</th>
+      <th>Email</th>
+      <th>Телефон</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%=render @departaments %>
+     
+  </tbody>
+</table>
+
+<%= paginate @departaments%> 
+</div>
