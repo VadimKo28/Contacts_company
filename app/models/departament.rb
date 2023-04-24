@@ -1,6 +1,5 @@
 class Departament < ApplicationRecord
-    has_many :contacts
+  has_many :contacts, dependent: :destroy
 
-    validates :title, presence: true
-    
+  validates :title, presence: true
 end

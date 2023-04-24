@@ -1,7 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :departament
 
-  validates :name, :telephone, :email, presence: true
+  validates :name, :telephone, :email, presence: true, uniqueness: true
 
   def as_json(options={})
     { :name => self.name,
